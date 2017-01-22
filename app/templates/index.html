@@ -1,0 +1,27 @@
+{% extends "frame.html" %}
+{% block frameContent %}
+{% if info_list|length > 0%}
+<h1>{{ intro.empIntro }}</h1>
+<h2>Total: {{ info_list|length }} employees are found. </h2>
+<ul>
+    {% set count = 1 %}
+    {% for employee in info_list %}
+    <h2>Employee {{ count }}</h2>
+    <li>
+        First Name: {{ employee.employee_info.first_name }}
+    </li>
+    <li>
+        Last Name: {{ employee.employee_info.last_name }}
+    </li>
+    <li>
+        Occupation: {{ employee.employee_info.occupation }}
+    </li>
+    {% set count = count + 1 %}
+    {% endfor %}
+</ul>
+
+{% else %}
+<h1>{{ into.goodbye }}</h1>
+{% endif %}
+{% endblock %}
+
